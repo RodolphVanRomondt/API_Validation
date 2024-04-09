@@ -169,7 +169,7 @@ describe("PUT /books/:isbn", function () {
         });
     });
 
-    test("Responds with 404 if can't find company", async function () {
+    test("Responds with 404 if can't find book", async function () {
         const response = await request(app)
             .put(`/books/0000000000`)
             .send({
