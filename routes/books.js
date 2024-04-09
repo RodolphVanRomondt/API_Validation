@@ -49,6 +49,8 @@ router.post("/", async function (req, res, next) {
 router.put("/:isbn", async function (req, res, next) {
   try {
 
+    const checkSchema = jsonschema.validate(req.body, bookSchema);
+
     if (jsonschema.validate(req.body, bookSchema).valid) {
       const book = await Book.update(req.params.isbn, req.body);
       return res.json({ book });
